@@ -1,4 +1,9 @@
 backbone-jeditable
 ==================
 
-jeditable plugin into backbone
+jquery jeditable plugin in backbone.js and tweeter bootstrap
+
+Documentation
+==================
+
+coming soon....
