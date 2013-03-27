@@ -8,6 +8,9 @@ var appConfig = {};
 // host do APP
 appConfig.host = 'http://' + window.location.host + '/';
 
+// project directory
+appConfig.project = 'backbone-jeditable';
+
 // Pastas onde o APP está armazenada. Caso o arquivo HTML não seja 'index.html'
 // alterar esta linha
 appConfig.uri = window.location.pathname.replace('index.html','').substr(1);
