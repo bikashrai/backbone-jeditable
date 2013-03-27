@@ -1,14 +1,11 @@
 /*
-|---------------------------------------------------------------------------------
-|	View module
-|---------------------------------------------------------------------------------
-*/
+ * Bikash Rai
+ * view
+ */
 App.Views.App = Backbone.View.extend({
 
 	initialize: function(){
 		this.template = _.template(tpl.get('example'));
-
-		// Exemplo de evento personalizado, ver App.Router
 		App.Events.on('myPersonalEvent', this.eventResponse, this);
 
 	},
@@ -21,6 +18,7 @@ App.Views.App = Backbone.View.extend({
     events: {
         'click .editable_textarea': 'editTextarea',
         'click .editable_select': 'editSelect',
+        'click .editable_textile': 'editTextile',
         'click .click': 'editClick',
         'dblclick .dblclick': 'editDblClick',
         'mouseover .mouseover': 'editMouseOver'
@@ -28,7 +26,7 @@ App.Views.App = Backbone.View.extend({
     },
 
     editTextarea: function () {
-        $(".editable_textarea").editable("<?php print $url ?>save.php", {
+        $(".editable_textarea").editable("api", {
             indicator : "<img src='"+appConfig.host+"/"+appConfig.project+"/img/indicator.gif'>",
             type   : 'textarea',
             submitdata: { _method: "put" },
@@ -40,7 +38,7 @@ App.Views.App = Backbone.View.extend({
     },
 
     editSelect: function () {
-        $(".editable_select").editable("<?php print $url ?>save.php", {
+        $(".editable_select").editable("api", {
             indicator : "<img src='"+appConfig.host+"/"+appConfig.project+"/img/indicator.gif'>",
             data   : "{'Lorem ipsum':'Lorem ipsum','Ipsum dolor':'Ipsum dolor','Dolor sit':'Dolor sit'}",
             type   : "select",
@@ -52,8 +50,19 @@ App.Views.App = Backbone.View.extend({
         });
     },
 
+    editTextile: function () {
+        $(".editable_textile").editable("api", {
+            indicator : "<img src='"+appConfig.host+"/"+appConfig.project+"/img/indicator.gif'>",
+            loadurl   : appConfig.host+"/"+appConfig.project+"/README.md",
+            type      : "textarea",
+            submit    : "OK",
+            cancel    : "Cancel",
+            tooltip   : "Click to edit..."
+        });
+    },
+
     editClick: function () {
-        $(".click").editable("<?php print $url ?>echo.php", {
+        $(".click").editable("api", {
             indicator : "<img src='"+appConfig.host+"/"+appConfig.project+"/img/indicator.gif'>",
             tooltip   : "Click to edit...",
             style  : "inherit"
@@ -61,7 +70,7 @@ App.Views.App = Backbone.View.extend({
     },
 
     editDblClick: function () {
-        $(".dblclick").editable("<?php print $url ?>echo.php", {
+        $(".dblclick").editable("api", {
             indicator : "<img src='"+appConfig.host+"/"+appConfig.project+"/img/indicator.gif'>",
             tooltip   : "Doubleclick to edit...",
             event     : "dblclick",
@@ -70,7 +79,7 @@ App.Views.App = Backbone.View.extend({
     },
 
     editMouseOver: function () {
-        $(".mouseover").editable("<?php print $url ?>echo.php", {
+        $(".mouseover").editable("api", {
             indicator : "<img src='"+appConfig.host+"/"+appConfig.project+"/img/indicator.gif'>",
             tooltip   : "Move mouseover to edit...",
             event     : "mouseover",
@@ -79,8 +88,6 @@ App.Views.App = Backbone.View.extend({
     },
 
 	eventResponse: function() {
-
-		// Renderiza View de exemplo
 		var page = new App.Views.App();
 		$(".main").html(page.render().el);
 		

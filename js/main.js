@@ -1,8 +1,6 @@
 /*
-|---------------------------------------------------------------------------------
-|	Estrutura todas as URLs do APP.
-|---------------------------------------------------------------------------------
-*/
+ * Bikash Rai
+ */
 App.Router = Backbone.Router.extend({
 
 	routes: {
@@ -10,11 +8,11 @@ App.Router = Backbone.Router.extend({
 	},
 
 	/**
-	 * Todas as inicializações devem vir aqui
+	 * initialize the router
 	 */
 	initialize: function(){
 
-		// Inicializa coleção principal
+		// Inicialize collection principal
 		window.myCollection = new App.Collections.MyCollection();
 
 		// Inicializa View principal
@@ -23,11 +21,10 @@ App.Router = Backbone.Router.extend({
 
 
 	/**
-	 * Página inicial
+	 * index route
 	 */
 	index: function(){
-		// Disparando um evento personalizado
-		// Aceita argumentos como segundo parâmetro
+		// example of user-defined events
 		App.Events.trigger('myPersonalEvent');
 	}
 
@@ -37,7 +34,7 @@ App.Router = Backbone.Router.extend({
 $(document).ready(function(){
 
 	/**
-	 * Carrega os templates necessários... inicia APP
+	 * dynamic loading the templates
 	 */
 	window.tpl.loadTemplates(['example'], function(){
 
