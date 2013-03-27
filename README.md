@@ -3,6 +3,9 @@ backbone-jeditable
 
 jquery jeditable plugin in backbone.js and tweeter bootstrap
 
+This plugin is just the convertion of https://github.com/tuupola/jquery_jeditable into backbone js.
+Author: https://github.com/tuupola
+
 Documentation
 ==================
 
